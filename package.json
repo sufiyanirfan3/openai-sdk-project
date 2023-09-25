@@ -11,12 +11,13 @@
     "react-dotenv": "^0.1.3",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "cohere-apilib":"./Cohere+API-TS_GENERIC_LIB/TS_GENERIC_LIB"
-   
+    "cohere-apilib": "./Cohere+API-TS_GENERIC_LIB/TS_GENERIC_LIB"
   },
   "scripts": {
+    "build": "if [ \"$WEBPACK_FALLBACK\" = \"stream\" ]; then npm run build-with-polyfill; else npm run build-without-polyfill; fi",
+    "build-with-polyfill": "webpack --config webpack.config.js",
+    "build-without-polyfill": "webpack --config webpack.config.no-polyfill.js",
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
